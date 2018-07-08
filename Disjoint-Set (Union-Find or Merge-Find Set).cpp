@@ -35,7 +35,7 @@ int PathCompression(int r)
     if(parent[r] == r)
 		return r;
 
-	parent[r] Find(parent[r]);
+	parent[r] = Find(parent[r]);
 	return parent[r];
 }
 
