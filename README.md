@@ -9,6 +9,7 @@
 
 # Stack
 1. https://www.geeksforgeeks.org/expression-evaluation/
+2. https://www.geeksforgeeks.org/implement-stack-using-queue/
 
 # Queue
 1. https://www.geeksforgeeks.org/queue-using-stacks/
