@@ -1,0 +1,72 @@
+/*
+* C++ Program to Implement Max Heap
+*/
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+void initialize_Array(int *array, int array_size)
+{
+	for (int i = 1; i <= array_size; i++)
+	{
+		cout << "Enter elements " << i << " :";
+		cin >> array[i];
+	}
+		
+}
+
+
+void max_heapify(int *array, int array_size,int parent)
+{
+	int largest;
+	int left_child = 2 * parent;
+	int right_child = 2 * parent + 1;
+
+	if (left_child <= array_size && array[left_child] > array[parent])
+		largest = left_child;
+	else
+		largest = parent;
+	if (right_child <= array_size && array[right_child] > array[largest])
+		largest = right_child;
+	
+	if (largest != parent)
+	{
+		//exchange(array[parent], array[largest]);
+		int temp = array[parent];
+		array[parent] = array[largest];
+		array[largest] = temp;
+
+		// Recusive call
+		max_heapify(array, array_size, largest);
+	}
+}
+
+void build_max_heap(int *array, int array_size)
+{
+	for (int index = array_size / 2; index >= 1; index--)
+		max_heapify(array, array_size, index);
+	
+}
+
+void print_heap(int *array, int array_size)
+{
+	cout << "Max Heap" << endl;
+	for (int i = 1; i <= array_size; i++)
+		cout << i << " -> " <<array[i] << endl;
+	
+}
+
+int main()
+{
+	int *arr,array_size;
+	cout << "Enter the no. of elements in the array: ";
+	cin >> array_size;
+
+	arr = new int[array_size];
+
+	initialize_Array(arr,array_size);
+	build_max_heap(arr,array_size);
+	print_heap(arr, array_size);
+
+	return 0;
+}

@@ -1,0 +1,68 @@
+http://www.sanfoundry.com/cpp-program-implement-max-heap/
+
+/*
+* C++ Program to Implement Max Heap
+*/
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+void max_heapify(int *array, int array_index, int array_size)
+{
+	
+	int temp = array[array_index];
+	int j = 2 * array_index;
+	while (j <= array_size)
+	{
+		if (j < array_size && array[j + 1] > array[j])
+			j = j + 1;
+		if (temp > array[j])
+			break;
+		else if (temp <= array[j])
+		{
+			array[j / 2] = array[j];
+			j = 2 * j;
+		}
+	}
+	array[j / 2] = temp;
+	
+}
+
+void build_maxHeap(int *array, int array_size)
+{
+	for (int index = array_size / 2; index >= 1; index--)
+	{
+		max_heapify(array, index, array_size);
+	}
+}
+
+void print_maxHeap(int *array, int array_size)
+{
+	cout << "Max Heap\n";
+
+	for (int i = 1; i <= array_size; i++)
+	{
+		cout << array[i] << endl;
+	}
+}
+
+int main()
+{
+	int array_size;
+	cout << "Enter the no. of elements of array: ";
+	cin >> array_size;
+
+	int *arr = new int[array_size];
+	for (int i = 1; i <= array_size; i++)
+	{
+		cout << "Enter element: " << (i) << endl;
+		cin >> arr[i];
+	}
+
+	build_maxHeap(arr, array_size);
+	
+	print_maxHeap(arr, array_size);
+
+	getch();
+	return 0;
+}
