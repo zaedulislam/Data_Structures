@@ -50,19 +50,19 @@ class DisjointSet {
     }
 
     public static void main(String[] args) {
-        DisjointSet uf = new DisjointSet(10);
+        DisjointSet disjointSet = new DisjointSet(10);
         // 1-2-5-6-7 3-8-9 4
-        uf.union(1, 2);
-        uf.union(2, 5);
-        uf.union(5, 6);
-        uf.union(6, 7);
-        uf.union(3, 8);
-        uf.union(8, 9);
+        disjointSet.union(1, 2);
+        disjointSet.union(2, 5);
+        disjointSet.union(5, 6);
+        disjointSet.union(6, 7);
+        disjointSet.union(3, 8);
+        disjointSet.union(8, 9);
         System.out.println(uf.connected(1, 5)); // true
         System.out.println(uf.connected(5, 7)); // true
         System.out.println(uf.connected(4, 9)); // false
         // 1-2-5-6-7 3-8-9-4
-        uf.union(9, 4);
+        disjointSet.union(9, 4);
         System.out.println(uf.connected(4, 9)); // true
     }
 }
